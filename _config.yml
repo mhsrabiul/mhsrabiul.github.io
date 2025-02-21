@@ -24,7 +24,7 @@ author:
   # Biographic information
   avatar           : "Avatar.jpg"
   name             : "Md Rabiul Hasan"
-  pronouns         : "He/Him" # example: "she/her"  
+  pronouns         : # example: "she/her"  
   bio              : "Enthusiast learner"
   location         : "Dhaka, Bangladesh"
   employer         : "RUET"

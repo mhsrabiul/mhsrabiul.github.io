@@ -1,6 +1,6 @@
 ---
 title: "Hybrid Fiber-Reinforced Concrete Strength Prediction"
-excerpt: "This study explores the use of machine learning models to predict the compressive strength of hybrid fiber-reinforced concrete. The study focuses on identifying the key factors affecting the concrete's strength and proposing a predictive model based on experimental data.<br/><img src='500x300.png'>"
+excerpt: "This study explores the use of machine learning models.<br/><img src='500x300.png'>"
 collection: research
 ---
 

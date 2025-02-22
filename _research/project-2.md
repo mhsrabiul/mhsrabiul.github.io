@@ -62,7 +62,7 @@ The key factors influencing the compressive strength of HFRC were found to be:
 
 <br/>
 <figure>
-    <img src="/images/Student_Engagement.png" alt="Compressive Strength vs. Fiber Type" width="300" height="200">
+    <img src="/images/Student_Engagement.png" width="300" height="200">
     <figcaption style="text-align: center; font-size: 16px; font-weight: bold;">Compressive Strength vs. Fiber Type</figcaption>
 </figure>
 

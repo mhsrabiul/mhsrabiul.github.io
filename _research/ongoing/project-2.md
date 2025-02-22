@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title: "Hybrid Fiber-Reinforced Concrete Strength Prediction"
 categories: research
 image: "<br/><img src='/images/MLP.png' width='300' height='200'>

@@ -1,7 +1,7 @@
 ---
 title: "AI in Flood Prediction"
 date: 2025-02-21
-layout: single
+layout: post
 author_profile: true
 excerpt: "Exploring the role of AI in predicting floods and managing risks."
 ---

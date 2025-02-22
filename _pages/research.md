@@ -14,8 +14,7 @@ author_profile: true
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p>{{ post.abstract }}</p>
         {% if post.image %}
-          <p>Image Path: {{ post.image }}</p>  <!-- Debugging line -->
-          <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" class="research-post-image">
+          <img src="{{ post.image }}" alt="{{ post.title }}">
         {% endif %}
         <p><a href="{{ post.url }}">Read more</a></p>
       </li>
@@ -34,8 +33,8 @@ author_profile: true
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p>{{ post.abstract }}</p>
         {% if post.image %}
-          <p>Image Path: {{ post.image }}</p>  <!-- Debugging line -->
-          <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" class="research-post-image">
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+        {% endif %}
         <p><a href="{{ post.url }}">Read more</a></p>
       </li>
     {% endfor %}

@@ -5,32 +5,31 @@ permalink: /research/
 author_profile: true
 ---
 
-# Ongoing Research
-
-{% assign ongoing_research = site.research | where: "status", "ongoing" %}
-{% if ongoing_research.size > 0 %}
+<h2>Ongoing Research</h2>
+{% assign ongoing_posts = site.research.ongoing %}
+{% if ongoing_posts.size > 0 %}
   <ul class="research-page-content">
-    {% for post in ongoing_research %}
+    {% for post in ongoing_posts %}
       <li class="research-post-content">
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p>{{ post.abstract }}</p>
         {% if post.image %}
-          <img src="{{ post.image }}" alt="{{ post.title }}">
+          <p>Image Path: {{ post.image }}</p>  <!-- Debugging line -->
+          <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" class="research-post-image">
         {% endif %}
         <p><a href="{{ post.url }}">Read more</a></p>
       </li>
     {% endfor %}
   </ul>
 {% else %}
-  <p>No ongoing research at the moment.</p>
+  <p>No ongoing research posts available.</p>
 {% endif %}
 
-# Finished Projects
-
-{% assign finished_research = site.research | where: "status", "completed" %}
-{% if finished_research.size > 0 %}
+<h2>Completed Projects</h2>
+{% assign completed_posts = site.research.completed %}
+{% if completed_posts.size > 0 %}
   <ul class="research-page-content">
-    {% for post in finished_research %}
+    {% for post in completed_posts %}
       <li class="research-post-content">
         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
         <p>{{ post.abstract }}</p>
@@ -42,6 +41,6 @@ author_profile: true
     {% endfor %}
   </ul>
 {% else %}
-  <p>No finished research projects.</p>
+  <p>No completed projects available.</p>
 {% endif %}
 

@@ -5,7 +5,7 @@ permalink: /research/
 author_profile: true
 ---
 
-### Ongoing Research
+# Ongoing Research
 
 {% assign ongoing_research = site.research | where: "status", "ongoing" %}
 {% if ongoing_research.size > 0 %}
@@ -25,7 +25,7 @@ author_profile: true
   <p>No ongoing research at the moment.</p>
 {% endif %}
 
-### Finished Projects
+# Finished Projects
 
 {% assign finished_research = site.research | where: "status", "finished" %}
 {% if finished_research.size > 0 %}

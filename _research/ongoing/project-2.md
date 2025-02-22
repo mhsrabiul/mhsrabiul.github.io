@@ -1,13 +1,10 @@
 ---
 title: "Hybrid Fiber-Reinforced Concrete Strength Prediction"
-date: 2025-02-20
-layout: single
 status: ongoing
 url: "/research/ongoing/project-2" 
-header:
-  teaser: "/images/MLP.png"  # Path to the teaser image
+excerpt: "This study explores the use of machine learning models to predict the compressive strength of hybrid fiber-reinforced concrete. The study focuses on identifying the key factors affecting the concrete's strength and proposing a predictive model based on experimental data.<br/><img src='/images/MLP.png'>"
+collection: research
 date: 2025-02-22
-abstract: "This study explores the use of machine learning models to predict the compressive strength of hybrid fiber-reinforced concrete. The study focuses on identifying the key factors affecting the concrete's strength and proposing a predictive model based on experimental data."
 ---
 
 ## Introduction

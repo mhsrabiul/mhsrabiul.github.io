@@ -27,7 +27,7 @@ author_profile: true
 
 # Finished Projects
 
-{% assign finished_research = site.research | where: "status", "finished" %}
+{% assign finished_research = site.research | where: "status", "completed" %}
 {% if finished_research.size > 0 %}
   <ul class="research-page-content">
     {% for post in finished_research %}

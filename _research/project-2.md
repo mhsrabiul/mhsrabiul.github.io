@@ -2,8 +2,8 @@
 layout: single
 title: "Hybrid Fiber-Reinforced Concrete Strength Prediction"
 categories: research
-image: "images/MLP.png"
-image2: "images/Instructor_Support.png"
+image: "<br/><img src='/images/MLP.png'>"
+image2: "<br/><img src='/images/Instructor_Support.png'>
 abstract: "This study explores the use of machine learning models to predict the compressive strength of hybrid fiber-reinforced concrete. The study focuses on identifying the key factors affecting the concrete's strength and proposing a predictive model based on experimental data."
 tags: [ML, concrete, prediction]
 date: 2025-02-20
@@ -60,13 +60,21 @@ The key factors influencing the compressive strength of HFRC were found to be:
 
 ### Compressive Strength vs. Fiber Type
 
-![Fiber Type and Strength](images/Student_Engagement.png)
+<br/>
+<figure>
+    <img src="/images/Student_Engagement.png" alt="Compressive Strength vs. Fiber Type">
+    <figcaption>Compressive Strength vs. Fiber Type</figcaption>
+</figure>
 
 The graph above shows how different fiber types affect the compressive strength of concrete. Steel fibers consistently provide the highest strength.
 
 ### Model Performance
 
-![Model Comparison](images/Challenges.png)
+<br/>
+<figure>
+    <img src="/images/Challenges.png" alt="Model comparsion">
+    <figcaption>Model comparison</figcaption>
+</figure>
 
 This bar chart compares the performance of various machine learning models in terms of R² score.
 

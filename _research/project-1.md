@@ -4,6 +4,7 @@ date: 2025-02-21
 layout: post
 author_profile: true
 excerpt: "Exploring the role of AI in predicting floods and managing risks."
+status: completed
 ---
 
 ## Introduction

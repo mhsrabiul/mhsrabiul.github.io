@@ -5,21 +5,9 @@ permalink: /research/
 author_profile: true
 ---
 
-<h2>Research Projects</h2>
-{% assign research_posts = site.research | sort: "date" | reverse %}
-{% if research_posts.size > 0 %}
-  <ul class="research-page-content">
-    {% for post in research_posts %}
-      <li class="research-post-content">
-        <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
-        <p>{{ post.abstract }}</p>
-        {% if post.image %}
-          <img src="{{ site.baseurl }}{{ post.image }}" alt="{{ post.title }}" class="research-post-image">
-        {% endif %}
-        <p><a href="{{ site.baseurl }}{{ post.url }}">Read more</a></p>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No research posts available.</p>
-{% endif %}
+{% include base_path %}
+
+
+{% for post in site.research %}
+  {% include research.html %}
+{% endfor %}

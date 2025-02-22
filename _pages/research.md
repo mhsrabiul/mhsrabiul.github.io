@@ -1,12 +1,46 @@
 ---
-layout: single
+layout: page
 title: "Research"
 permalink: /research/
 author_profile: true
 ---
 
-## Research Projects
+# Ongoing Research
 
-{% for research in site.research %}
-- [{{ research.title }}]({{ research.url }}) - *{{ research.date | date: "%B %d, %Y" }}*
-{% endfor %}
+{% assign ongoing_research = site.posts | where: "status", "ongoing" %}
+{% if ongoing_research.size > 0 %}
+  <ul>
+    {% for post in ongoing_research %}
+      <li>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p>{{ post.abstract }}</p>
+        {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" style="max-width: 300px;">
+        {% endif %}
+        <p><a href="{{ post.url }}">Read more</a></p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No ongoing research at the moment.</p>
+{% endif %}
+
+# Finished Projects
+
+{% assign finished_research = site.posts | where: "status", "finished" %}
+{% if finished_research.size > 0 %}
+  <ul>
+    {% for post in finished_research %}
+      <li>
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p>{{ post.abstract }}</p>
+        {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" style="max-width: 300px;">
+        {% endif %}
+        <p><a href="{{ post.url }}">Read more</a></p>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No finished research projects.</p>
+{% endif %}

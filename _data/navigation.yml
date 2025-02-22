@@ -5,6 +5,9 @@
 # prevent it from being included in the site.
 
 main:
+  - title: "Research"  # Add this line
+    url: "/research/"  # This should match the permalink in `research.md`
+  
   - title: "Publications"
     url: /publications/
 
@@ -23,6 +26,4 @@ main:
   - title: "CV"
     url: /cv/
   
-  - title: "Research"  # Add this line
-    url: "/research/"  # This should match the permalink in `research.md`
 

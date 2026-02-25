@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Rabiul Hasan | Researcher & Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c10;
+  --bg2: #111318;
+  --bg3: #1a1d25;
+  --accent: #7dd3c0;
+  --accent2: #c8a96e;
+  --text: #e8eaf0;
+  --text-muted: #7a8090;
+  --border: rgba(125,211,192,0.15);
+  --card: rgba(26,29,37,0.8);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse 60% 40% at 80% 10%, rgba(125,211,192,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse 40% 60% at 10% 80%, rgba(200,169,110,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,12,16,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem; color: var(--accent);
+  cursor: pointer;
+}
+.nav-links { display: flex; gap: 0.25rem; list-style: none; }
+.nav-links a {
+  display: block; padding: 0.45rem 0.8rem;
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-radius: 6px; transition: all 0.2s; cursor: pointer;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); background: rgba(125,211,192,0.08); }
+.nav-links a.active { border-bottom: 2px solid var(--accent); border-radius: 6px 6px 0 0; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: 0.3s; }
+
+/* PAGES */
+.page { display: none; min-height: 100vh; padding-top: 64px; position: relative; z-index: 1; }
+.page.active { display: block; animation: fadeUp 0.5s ease both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+/* ABOUT */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 64px);
+  max-width: 1200px; margin: 0 auto;
+  padding: 5rem 2rem 3rem; gap: 4rem; align-items: center;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.75rem;
+  color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--accent); }
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem,5vw,4rem); line-height: 1.15;
+  color: var(--text); margin-bottom: 0.75rem;
+}
+.hero-name span { color: var(--accent); }
+.hero-title { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 2rem; font-weight: 300; }
+.hero-abstract {
+  font-size: 0.88rem; line-height: 1.8; color: #b0b8c8;
+  margin-bottom: 2.5rem; border-left: 2px solid var(--accent2); padding-left: 1.25rem;
+}
+.contact-grid { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 2rem; }
+.contact-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; color: var(--text-muted); }
+.contact-item svg { color: var(--accent); flex-shrink: 0; }
+.social-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.social-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.4rem 0.9rem; border: 1px solid var(--border);
+  border-radius: 50px; font-size: 0.75rem; color: var(--text-muted);
+  text-decoration: none; transition: all 0.2s; background: var(--card);
+}
+.social-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(125,211,192,0.08); transform: translateY(-2px); }
+.hero-photo { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+.photo-frame { position: relative; width: 260px; height: 260px; }
+.photo-frame::before {
+  content:''; position:absolute; inset:-8px;
+  border:1px solid rgba(125,211,192,0.3); border-radius:50%;
+  animation: spin 20s linear infinite;
+}
+.photo-frame::after {
+  content:''; position:absolute; inset:-16px;
+  border:1px dashed rgba(200,169,110,0.2); border-radius:50%;
+  animation: spin 30s linear infinite reverse;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.photo-circle {
+  width: 260px; height: 260px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--bg3), var(--bg2));
+  border: 3px solid rgba(125,211,192,0.4);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.photo-placeholder { display:flex; flex-direction:column; align-items:center; gap:0.5rem; text-align:center; padding:1rem; }
+.photo-placeholder svg { width:70px; height:70px; color:rgba(125,211,192,0.3); }
+.photo-placeholder p { font-size:0.7rem; font-family:'DM Mono',monospace; color:rgba(125,211,192,0.4); }
+.expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; width: 100%; }
+.expertise-chip {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 0.65rem 0.75rem;
+  text-align: center; font-size: 0.73rem; color: var(--text-muted); transition: all 0.2s;
+}
+.expertise-chip:hover { border-color: rgba(125,211,192,0.4); color: var(--accent); transform: translateY(-2px); }
+.expertise-chip .chip-icon { font-size: 1.1rem; margin-bottom: 0.25rem; display: block; }
+
+/* SECTION SHARED */
+.section-wrap { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+.section-header { margin-bottom: 3rem; }
+.section-eyebrow {
+  font-family: 'DM Mono', monospace; font-size: 0.72rem;
+  color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem;
+}
+.section-eyebrow::before { content:''; display:block; width:24px; height:1px; background:var(--accent); }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,2.8rem); color: var(--text); line-height: 1.2; }
+
+/* CV */
+.cv-download-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), #5bbfaa);
+  color: var(--bg); font-weight: 600; font-size: 0.83rem;
+  border-radius: 8px; text-decoration: none; transition: all 0.25s; margin-bottom: 3rem;
+}
+.cv-download-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(125,211,192,0.3); }
+.cv-section-title {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent2); margin: 2.5rem 0 1.5rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.timeline { position: relative; padding-left: 1.5rem; }
+.timeline::before {
+  content:''; position:absolute; left:0; top:6px; bottom:6px;
+  width:1px; background: linear-gradient(to bottom, var(--accent), transparent);
+}
+.tl-item { position: relative; margin-bottom: 2rem; }
+.tl-item::before {
+  content:''; position:absolute; left:-1.5rem; top:6px;
+  width:8px; height:8px; border-radius:50%;
+  background: var(--accent); border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tl-period { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 0.3rem; }
+.tl-role { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 0.2rem; }
+.tl-org { font-size: 0.85rem; color: var(--accent2); margin-bottom: 0.5rem; }
+.tl-detail { font-size: 0.82rem; color: var(--text-muted); line-height: 1.65; }
+.skills-inline { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+.si { padding: 0.25rem 0.7rem; background: var(--card); border: 1px solid var(--border); border-radius: 50px; font-size: 0.75rem; color: var(--text-muted); }
+
+/* ===== CV SKILL CARDS ===== */
+.skill-section-intro {
+  font-size: 0.85rem; color: #9aa0b0; line-height: 1.75;
+  margin-bottom: 2rem; padding: 1.25rem 1.5rem;
+  background: var(--card); border-radius: 10px;
+  border-left: 3px solid var(--accent2);
+}
+.skill-group { margin-bottom: 2.25rem; }
+.skill-group-label {
+  font-family: 'DM Mono', monospace; font-size: 0.68rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.skill-group-label::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, var(--border), transparent);
+}
+.skill-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.skill-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  opacity: 0; transition: opacity 0.25s;
+}
+.skill-card:hover { border-color: rgba(125,211,192,0.3); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.skill-card:hover::before { opacity: 1; }
+.skill-card.cat-prog::before { background: linear-gradient(to right, #7dd3c0, #5bbfaa); }
+.skill-card.cat-gis::before { background: linear-gradient(to right, #6ee7b7, #059669); }
+.skill-card.cat-struct::before { background: linear-gradient(to right, #c8a96e, #e09a40); }
+.skill-card.cat-doc::before { background: linear-gradient(to right, #a78bfa, #7c3aed); }
+.skill-card.cat-env::before { background: linear-gradient(to right, #86efac, #16a34a); }
+.skill-card-top { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.65rem; }
+.skill-icon {
+  font-size: 1.3rem; flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: rgba(125,211,192,0.07);
+  border: 1px solid rgba(125,211,192,0.12);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.skill-name-block { flex: 1; }
+.skill-name {
+  font-family: 'DM Mono', monospace; font-size: 0.8rem;
+  font-weight: 500; color: var(--accent);
+  letter-spacing: 0.04em; margin-bottom: 0.2rem;
+}
+.skill-level {
+  display: flex; gap: 3px;
+}
+.skill-dot-level {
+  width: 14px; height: 3px; border-radius: 2px;
+  background: rgba(125,211,192,0.15);
+}
+.skill-dot-level.filled { background: var(--accent); }
+.skill-desc {
+  font-size: 0.77rem; color: var(--text-muted); line-height: 1.55;
+  margin-bottom: 0.6rem;
+}
+.skill-proj-link {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.71rem; font-family: 'DM Mono', monospace;
+  color: rgba(125,211,192,0.65); text-decoration: none;
+  border: 1px solid rgba(125,211,192,0.15);
+  border-radius: 4px; padding: 0.2rem 0.55rem;
+  transition: all 0.2s; letter-spacing: 0.03em;
+  background: rgba(125,211,192,0.03);
+}
+.skill-proj-link:hover { color: var(--accent); border-color: rgba(125,211,192,0.4); background: rgba(125,211,192,0.08); }
+.skill-proj-link svg { flex-shrink: 0; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+.skill-sub-tag {
+  font-size: 0.66rem; font-family: 'DM Mono', monospace;
+  padding: 0.15rem 0.5rem; border-radius: 3px;
+  background: rgba(200,169,110,0.08); color: var(--accent2);
+  border: 1px solid rgba(200,169,110,0.15);
+}
+@media(max-width:600px) { .skill-cards { grid-template-columns: 1fr; } }
+
+.awards-list { list-style: none; }
+.awards-list li {
+  padding: 0.75rem 1rem 0.75rem 1.25rem;
+  border-left: 2px solid var(--accent2); margin-bottom: 0.75rem;
+  background: var(--card); border-radius: 0 8px 8px 0;
+  font-size: 0.85rem; color: var(--text-muted);
+}
+
+/* PUBLICATIONS */
+.pub-filter { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+.filter-btn {
+  padding: 0.4rem 1rem; border-radius:50px;
+  font-size: 0.75rem; font-family:'DM Mono',monospace; letter-spacing:0.06em;
+  border: 1px solid var(--border); color: var(--text-muted);
+  background: transparent; cursor: pointer; transition: all 0.2s;
+}
+.filter-btn.active, .filter-btn:hover { background: rgba(125,211,192,0.1); border-color: var(--accent); color: var(--accent); }
+.pub-group-label {
+  font-family: 'DM Mono', monospace; font-size: 0.7rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent2); margin: 2rem 0 1rem;
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.pub-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  margin-bottom: 1.25rem; transition: all 0.3s; position: relative; overflow: hidden;
+}
+.pub-card::before {
+  content:''; position:absolute; top:0; left:0;
+  width:3px; height:100%; border-radius: 3px 0 0 3px;
+}
+.pub-card.journal::before { background: linear-gradient(to bottom, var(--accent), #5bbfaa); }
+.pub-card.conference::before { background: linear-gradient(to bottom, var(--accent2), #e09a40); }
+.pub-card.preprint::before { background: linear-gradient(to bottom, #a78bfa, #7c3aed); }
+.pub-card:hover { border-color: rgba(125,211,192,0.3); transform: translateX(3px); }
+.pub-badge {
+  display: inline-block; font-family:'DM Mono',monospace; font-size:0.65rem;
+  letter-spacing:0.1em; padding:0.2rem 0.6rem; border-radius:4px; margin-bottom:0.6rem; margin-right:0.4rem;
+}
+.pub-badge.j { background:rgba(125,211,192,0.1); color:var(--accent); }
+.pub-badge.c { background:rgba(200,169,110,0.1); color:var(--accent2); }
+.pub-badge.p { background:rgba(167,139,250,0.1); color:#a78bfa; }
+.pub-badge.q2 { background:rgba(34,197,94,0.1); color:#4ade80; }
+.pub-badge.q3 { background:rgba(251,191,36,0.1); color:#fbbf24; }
+.pub-title { font-family:'Playfair Display',serif; font-size:0.98rem; color:var(--text); margin-bottom:0.4rem; line-height:1.5; }
+.pub-authors { font-size:0.78rem; color:var(--text-muted); margin-bottom:0.3rem; }
+.pub-authors strong { color:var(--accent); }
+.pub-journal { font-size:0.78rem; color: var(--accent2); font-style: italic; margin-bottom:0.3rem; }
+.pub-doi a { font-size: 0.75rem; color: var(--text-muted); text-decoration: none; font-family:'DM Mono',monospace; }
+.pub-doi a:hover { color: var(--accent); }
+
+/* RESEARCH INTEREST GRID */
+.ri-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:1rem; margin-bottom:2.5rem; }
+.ri-card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:1.25rem; transition:all 0.2s;
+}
+.ri-card:hover { border-color:rgba(125,211,192,0.3); transform:translateY(-2px); }
+.ri-icon { font-size:1.5rem; margin-bottom:0.5rem; }
+.ri-name { font-size:0.82rem; color:var(--text); font-weight:500; line-height:1.4; }
+
+/* BLOG / POSTS */
+.post-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.post-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; overflow: hidden; transition: all 0.3s; cursor: pointer;
+}
+.post-card:hover { border-color: rgba(125,211,192,0.35); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
+.post-thumb {
+  height: 150px; background: linear-gradient(135deg, #1a1d25, #111318);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; border-bottom: 1px solid var(--border); position: relative; overflow: hidden;
+}
+.post-body { padding: 1.25rem; }
+.post-meta { font-family:'DM Mono',monospace; font-size:0.68rem; color:var(--accent); letter-spacing:0.08em; margin-bottom:0.5rem; }
+.post-title { font-family:'Playfair Display',serif; font-size:0.97rem; color:var(--text); line-height:1.4; margin-bottom:0.6rem; }
+.post-excerpt { font-size:0.78rem; color:var(--text-muted); line-height:1.65; margin-bottom:1rem; }
+.post-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+.ptag {
+  padding:0.2rem 0.6rem; border-radius:50px; font-size:0.68rem;
+  font-family:'DM Mono',monospace;
+  background:rgba(125,211,192,0.07); color:var(--accent);
+  border:1px solid rgba(125,211,192,0.12);
+}
+.add-post-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 1.2rem;
+  border: 1px dashed rgba(125,211,192,0.4);
+  border-radius: 8px; font-size: 0.79rem; color: var(--accent);
+  background: rgba(125,211,192,0.04); cursor: pointer; transition: all 0.2s;
+  margin-bottom: 2rem;
+}
+.add-post-btn:hover { background: rgba(125,211,192,0.1); border-color: var(--accent); }
+
+/* SKILLS */
+.skill-cat-title {
+  font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--accent2); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border);
+}
+.skill-items { display:flex; flex-wrap:wrap; gap:0.65rem; margin-bottom:2rem; }
+.skill-item {
+  background:var(--card); border:1px solid var(--border); border-radius:8px;
+  padding:0.55rem 1rem; font-size:0.8rem; color:var(--text-muted);
+  display:flex; align-items:center; gap:0.5rem; transition:all 0.2s;
+}
+.skill-item:hover { border-color:rgba(125,211,192,0.35); color:var(--accent); transform:translateY(-2px); }
+.skill-dot { width:5px; height:5px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+/* MODAL */
+.modal-overlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.75); z-index:200;
+  backdrop-filter:blur(6px);
+  align-items:center; justify-content:center;
+}
+.modal-overlay.open { display:flex; }
+.modal {
+  background:var(--bg2); border:1px solid var(--border);
+  border-radius:16px; width:90%; max-width:640px;
+  max-height:90vh; overflow-y:auto; padding:2rem;
+}
+.modal-title { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); margin-bottom:1.5rem; }
+.form-group { margin-bottom:1.25rem; }
+.form-label { display:block; font-size:0.75rem; font-family:'DM Mono',monospace; color:var(--accent); letter-spacing:0.1em; margin-bottom:0.4rem; }
+.form-input, .form-textarea {
+  width:100%; padding:0.65rem 0.9rem;
+  background:var(--bg3); border:1px solid var(--border);
+  border-radius:8px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:0.85rem;
+  transition:border-color 0.2s; outline:none;
+}
+.form-input:focus, .form-textarea:focus { border-color:var(--accent); }
+.form-textarea { min-height:130px; resize:vertical; }
+.modal-actions { display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1.5rem; }
+.btn-primary {
+  padding:0.6rem 1.5rem; background:var(--accent); color:var(--bg);
+  border:none; border-radius:8px; font-weight:600; font-size:0.83rem;
+  cursor:pointer; transition:all 0.2s;
+}
+.btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(125,211,192,0.3); }
+.btn-secondary {
+  padding:0.6rem 1.2rem; border:1px solid var(--border); color:var(--text-muted);
+  background:transparent; border-radius:8px; font-size:0.83rem; cursor:pointer; transition:all 0.2s;
+}
+.btn-secondary:hover { border-color:var(--text-muted); color:var(--text); }
+.close-btn {
+  cursor:pointer; width:32px; height:32px;
+  border-radius:8px; border:1px solid var(--border);
+  background:transparent; color:var(--text-muted);
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:all 0.2s; font-size:1rem;
+}
+.close-btn:hover { border-color:var(--accent); color:var(--accent); }
+.delete-btn {
+  padding:0.4rem 0.8rem; border:1px solid rgba(239,68,68,0.3);
+  color:#ef4444; background:transparent; border-radius:6px;
+  font-size:0.75rem; cursor:pointer; transition:all 0.2s; margin-right:auto;
+}
+.delete-btn:hover { background:rgba(239,68,68,0.08); }
+.pd-title { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--text); margin-bottom:0.5rem; line-height:1.4; }
+.pd-meta { font-family:'DM Mono',monospace; font-size:0.72rem; color:var(--accent); margin-bottom:1.5rem; }
+.pd-content { font-size:0.88rem; color:#b0b8c8; line-height:1.85; white-space:pre-wrap; }
+
+footer {
+  text-align:center; padding:2rem;
+  font-family:'DM Mono',monospace; font-size:0.7rem;
+  color:var(--text-muted); border-top:1px solid var(--border); letter-spacing:0.05em;
+}
+footer span { color:var(--accent); }
+
+@media(max-width:768px) {
+  .hamburger { display:flex; }
+  .nav-links {
+    position:fixed; top:64px; left:0; right:0;
+    background:rgba(10,12,16,0.97); backdrop-filter:blur(20px);
+    flex-direction:column; padding:1rem; gap:0.2rem;
+    border-bottom:1px solid var(--border);
+    transform:translateY(-110%); transition:transform 0.3s;
+  }
+  .nav-links.open { transform:translateY(0); }
+  .nav-links a { padding:0.7rem 1rem; }
+  .hero { grid-template-columns:1fr; padding:3rem 1.5rem 2rem; gap:2.5rem; }
+  .hero-photo { order:-1; }
+  .photo-frame, .photo-circle { width:200px; height:200px; }
+  .post-grid { grid-template-columns:1fr; }
+  .ri-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:480px) { .ri-grid { grid-template-columns:1fr; } }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:rgba(125,211,192,0.3); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('about')">MRH</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a class="active" data-page="about" onclick="showPage('about');return false;" href="#">About Me</a></li>
+      <li><a data-page="cv" onclick="showPage('cv');return false;" href="#">CV</a></li>
+      <li><a data-page="publications" onclick="showPage('publications');return false;" href="#">Publications</a></li>
+      <li><a data-page="research" onclick="showPage('research');return false;" href="#">Research</a></li>
+      <li><a data-page="projects" onclick="showPage('projects');return false;" href="#">Projects</a></li>
+      <li><a data-page="lab" onclick="showPage('lab');return false;" href="#">Lab Expertise</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ABOUT -->
+<div id="page-about" class="page active">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Researcher &amp; Engineer</div>
+      <h1 class="hero-name">Md Rabiul<br><span>Hasan</span></h1>
+      <p class="hero-title">Enthusiast Learner &nbsp;·&nbsp; Building Engineering &amp; Construction Management</p>
+      <p class="hero-abstract">As a Building Engineering &amp; Construction Management graduate, I spearheaded projects in structural analysis and design, showcasing my expertise in construction materials. Driven by a passion for innovation, my undergraduate thesis on machine learning for concrete strength prediction reflects my dedication to pushing the boundaries of construction technology. Eager to deepen my knowledge, I aspire to pursue advanced studies in this domain, contributing to cutting-edge advancements in concrete science and technology.</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dhaka, Bangladesh
+        </div>
+        <div class="contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="473526252e322b767f767577767e07202a262e2b6924282a">[email&#160;protected]</a> &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="182920292a282921586b6c6d7c7d766c366a6d7d6c36797b367a7c">[email&#160;protected]</a>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="#" class="social-btn">🎓 Google Scholar</a>
+        <a href="https://orcid.org" target="_blank" class="social-btn">🔬 ORCID</a>
+        <a href="https://github.com/mhsrabiul" target="_blank" class="social-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+          GitHub
+        </a>
+        <a href="#" class="social-btn">📋 ResearchGate</a>
+        <a href="#" class="social-btn">💼 LinkedIn</a>
+        <a href="#" class="social-btn">📸 Instagram</a>
+        <a href="#" class="social-btn">📘 Facebook</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-circle" id="photoCircle">
+          <div class="photo-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>Add photo:<br>assets/photo.jpg</p>
+          </div>
+        </div>
+      </div>
+      <div class="expertise-grid">
+        <div class="expertise-chip"><span class="chip-icon">🤖</span>AI in Construction</div>
+        <div class="expertise-chip"><span class="chip-icon">🏗️</span>Structural Analysis</div>
+        <div class="expertise-chip"><span class="chip-icon">🧱</span>Concrete Science</div>
+        <div class="expertise-chip"><span class="chip-icon">♻️</span>Sustainable Materials</div>
+        <div class="expertise-chip"><span class="chip-icon">📊</span>Data-driven Models</div>
+        <div class="expertise-chip"><span class="chip-icon">🏢</span>Digital Twin &amp; BIM</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 <span>Md Rabiul Hasan</span> · mhsrabiul.github.io</footer>
+</div>
+
+<!-- CV -->
+<div id="page-cv" class="page">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Curriculum Vitae</div>
+      <h2 class="section-title">Academic &amp; Professional Record</h2>
+    </div>
+    <a href="assets/cv.pdf" class="cv-download-btn" download>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Full CV (PDF)
+    </a>
+
+    <div class="cv-section-title">Education</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">April 2025 – Present</div>
+        <div class="tl-role">M.Sc in Civil Engineering (Structure)</div>
+        <div class="tl-org">Military Institute of Science and Technology (MIST), Dhaka</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period">January 2019 – March 2024</div>
+        <div class="tl-role">B.Sc in Building Engineering &amp; Construction Management</div>
+        <div class="tl-org">Rajshahi University of Engineering &amp; Technology (RUET)</div>
+        <div class="tl-detail">
+          CGPA: <strong style="color:var(--accent)">3.14 / 4.00</strong><br>
+          Dissertation: <em>Data-driven Prediction of Concrete Strength by AI: Fiber Reinforced Recycled Aggregate Concrete</em><br>
+          Supervisor: Asst. Prof. Mehedi Hasan
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-section-title">Research Experience</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">April 2021 – December 2023</div>
+        <div class="tl-role">Research Assistant</div>
+        <div class="tl-org">Construction Technology Lab, Dept. of BECM, RUET — under Asst. Prof. Mehedi Hasan</div>
+        <div class="tl-detail">Laboratory testing · Field survey · Writing research manuscripts</div>
+      </div>
+    </div>
+
+    <div class="cv-section-title">Professional Experience</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">April 2023 – May 2023</div>
+        <div class="tl-role">Trainee Engineer</div>
+        <div class="tl-org">Building Technology &amp; Ideas Ltd.</div>
+        <div class="tl-detail">Substructure construction, footing reinforcement, shuttering work, beam &amp; slab casting.</div>
+      </div>
+    </div>
+
+    <div class="cv-section-title">Software &amp; Programming Skills</div>
+
+    <div class="skill-section-intro">
+      Developed compressive strength prediction models using Linear, Tree-based and Ensemble ML algorithms. Experienced with flood econometrics &amp; Spatial Lag/Error Models, ANN, CNN, big data handling and visualizations. Statistical analysis with SPSS. Geographical data visualization with ArcGIS. Manuscript writing with MS Office and LaTeX.
+    </div>
+
+    <!-- Programming & ML -->
+    <div class="skill-group">
+      <div class="skill-group-label">Programming &amp; Machine Learning</div>
+      <div class="skill-cards">
+
+        <div class="skill-card cat-prog">
+          <div class="skill-card-top">
+            <div class="skill-icon">🐍</div>
+            <div class="skill-name-block">
+              <div class="skill-name">Python</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Primary language for ML model development, data preprocessing, visualization, and automation scripts for civil engineering applications.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Scikit-learn</span>
+            <span class="skill-sub-tag">XGBoost</span>
+            <span class="skill-sub-tag">Pandas</span>
+            <span class="skill-sub-tag">NumPy</span>
+            <span class="skill-sub-tag">Matplotlib</span>
+          </div>
+          <div style="margin-top:0.65rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
+            <a href="https://github.com/mhsrabiul" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              Concrete Strength Prediction
+            </a>
+            <a href="https://github.com/mhsrabiul" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              Soil Classification Toolkit
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card cat-prog">
+          <div class="skill-card-top">
+            <div class="skill-icon">🤖</div>
+            <div class="skill-name-block">
+              <div class="skill-name">Scikit-learn / XGBoost</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Built and evaluated Random Forest, Gradient Boosting, SVR and ensemble models for compressive strength prediction of fiber-reinforced recycled aggregate concrete.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Random Forest</span>
+            <span class="skill-sub-tag">SVM</span>
+            <span class="skill-sub-tag">SHAP</span>
+          </div>
+          <div style="margin-top:0.65rem;">
+            <a href="https://doi.org/10.1108/WJE-01-2025-0038" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Published — World Journal of Engineering 2025
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card cat-prog">
+          <div class="skill-card-top">
+            <div class="skill-icon">🧠</div>
+            <div class="skill-name-block">
+              <div class="skill-name">ANN / CNN</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Implemented Artificial Neural Networks and Convolutional Neural Networks for pattern recognition and regression tasks in structural materials data.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">TensorFlow</span>
+            <span class="skill-sub-tag">Keras</span>
+            <span class="skill-sub-tag">Big Data</span>
+          </div>
+          <div style="margin-top:0.65rem;">
+            <a href="https://github.com/mhsrabiul" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              ML-Optimized Alkali-Activated RAC (pre-print)
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card cat-prog">
+          <div class="skill-card-top">
+            <div class="skill-icon">📊</div>
+            <div class="skill-name-block">
+              <div class="skill-name">SPSS</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Statistical analysis including ANOVA, regression, correlation, and hypothesis testing for experimental concrete data interpretation.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Regression</span>
+            <span class="skill-sub-tag">ANOVA</span>
+            <span class="skill-sub-tag">Descriptive Stats</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Geospatial & Spatial Analysis -->
+    <div class="skill-group">
+      <div class="skill-group-label">Geospatial &amp; Spatial Analysis</div>
+      <div class="skill-cards">
+
+        <div class="skill-card cat-gis">
+          <div class="skill-card-top">
+            <div class="skill-icon">🗺️</div>
+            <div class="skill-name-block">
+              <div class="skill-name">ArcGIS</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Geographical data visualization, spatial mapping, and choropleth generation for flood econometrics and regional infrastructure analysis across Bangladesh.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Spatial Lag Model</span>
+            <span class="skill-sub-tag">Moran's I</span>
+            <span class="skill-sub-tag">GeoPandas</span>
+          </div>
+          <div style="margin-top:0.65rem;">
+            <a href="https://github.com/mhsrabiul" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+              Flood Econometrics &amp; Spillover Detection
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card cat-gis">
+          <div class="skill-card-top">
+            <div class="skill-icon">📐</div>
+            <div class="skill-name-block">
+              <div class="skill-name">AutoCAD</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">2D drafting and technical drawings for structural layouts, construction detailing, and architectural plans during undergraduate coursework and site work.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">2D Drafting</span>
+            <span class="skill-sub-tag">Structural Detailing</span>
+            <span class="skill-sub-tag">Site Plans</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Environmental & BIM -->
+    <div class="skill-group">
+      <div class="skill-group-label">Environmental &amp; BIM Tools</div>
+      <div class="skill-cards">
+
+        <div class="skill-card cat-env">
+          <div class="skill-card-top">
+            <div class="skill-icon">🌱</div>
+            <div class="skill-name-block">
+              <div class="skill-name">Open LCA</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Conducted full life cycle assessments (A1–A3) for concrete mixes using ecoinvent database; calculated GWP, CED and water use for alkali-activated vs OPC concrete.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">LCA</span>
+            <span class="skill-sub-tag">GWP</span>
+            <span class="skill-sub-tag">ecoinvent</span>
+          </div>
+          <div style="margin-top:0.65rem;">
+            <a href="https://doi.org/10.31224/5062" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              ML-Optimized RAC — Life Cycle Assessment
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card cat-env">
+          <div class="skill-card-top">
+            <div class="skill-icon">⚡</div>
+            <div class="skill-name-block">
+              <div class="skill-name">EnergyPlus</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Building energy simulation for thermal load analysis; studied the effect of building orientation on sensible and latent energy demand in a BIM-integrated workflow.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Thermal Loads</span>
+            <span class="skill-sub-tag">BIM Integration</span>
+            <span class="skill-sub-tag">Energy Simulation</span>
+          </div>
+          <div style="margin-top:0.65rem;">
+            <a href="https://doi.org/10.30880/ijscet.2025.16.01.004" target="_blank" class="skill-proj-link">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Building Orientation &amp; Energy Loads — IJSCET 2025
+            </a>
+          </div>
+        </div>
+
+        <div class="skill-card cat-env">
+          <div class="skill-card-top">
+            <div class="skill-icon">🔍</div>
+            <div class="skill-name-block">
+              <div class="skill-name">GOM Correlate</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Digital image correlation (DIC) software for non-contact full-field deformation and strain measurement of concrete specimens under loading in the lab.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">DIC</span>
+            <span class="skill-sub-tag">Strain Mapping</span>
+            <span class="skill-sub-tag">Lab Testing</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Documentation -->
+    <div class="skill-group">
+      <div class="skill-group-label">Documentation &amp; Reporting</div>
+      <div class="skill-cards">
+
+        <div class="skill-card cat-doc">
+          <div class="skill-card-top">
+            <div class="skill-icon">📝</div>
+            <div class="skill-name-block">
+              <div class="skill-name">LaTeX</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Typeset all journal manuscripts, conference papers and thesis using LaTeX with custom formatting; managed references via BibTeX.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Overleaf</span>
+            <span class="skill-sub-tag">BibTeX</span>
+            <span class="skill-sub-tag">IEEE / Elsevier templates</span>
+          </div>
+        </div>
+
+        <div class="skill-card cat-doc">
+          <div class="skill-card-top">
+            <div class="skill-icon">📋</div>
+            <div class="skill-name-block">
+              <div class="skill-name">MS Office</div>
+              <div class="skill-level">
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level filled"></div>
+                <div class="skill-dot-level"></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-desc">Technical reports, data tables, presentations and spreadsheet-based analysis for lab results, project documentation and academic submissions.</div>
+          <div class="skill-tags">
+            <span class="skill-sub-tag">Word</span>
+            <span class="skill-sub-tag">Excel</span>
+            <span class="skill-sub-tag">PowerPoint</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="cv-section-title">Honors &amp; Achievements</div>
+    <ul class="awards-list">
+      <li>🏅 Merit-based Technical Scholarship — 2024 &amp; 2023, Rajshahi University of Engineering &amp; Technology</li>
+      <li>🏆 Best Paper Presentation Award — 2nd International Conference on Advances in Civil Infrastructure and Construction Materials, 2023</li>
+    </ul>
+
+    <div class="cv-section-title">Co-curricular</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">2021 – 2023</div>
+        <div class="tl-role">Event Management Coordinator</div>
+        <div class="tl-org">RUET Career Forum</div>
+        <div class="tl-detail">Handled annual member recruitment, managed sponsoring companies for Career Fair, organized two skill development workshops, designed marketing strategy for workshop promotions.</div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 <span>Md Rabiul Hasan</span> · mhsrabiul.github.io</footer>
+</div>
+
+<!-- PUBLICATIONS -->
+<div id="page-publications" class="page">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Academic Output</div>
+      <h2 class="section-title">Publications</h2>
+    </div>
+    <div class="pub-filter">
+      <button class="filter-btn active" onclick="filterPubs('all',this)">All (7)</button>
+      <button class="filter-btn" onclick="filterPubs('journal',this)">Journal (2)</button>
+      <button class="filter-btn" onclick="filterPubs('preprint',this)">Pre-print (1)</button>
+      <button class="filter-btn" onclick="filterPubs('conference',this)">Conference (4)</button>
+    </div>
+
+    <div class="pub-group pub-group-journal">
+      <div class="pub-group-label">Journal Articles</div>
+      <div class="pub-card journal">
+        <span class="pub-badge j">JOURNAL</span><span class="pub-badge q2">SCOPUS Q2</span>
+        <div class="pub-title">Data-driven prediction of concrete strength by machine learning: hybrid-fiber-reinforced recycled aggregate concrete</div>
+        <div class="pub-authors"><strong>Md Rabiul Hasan</strong>, Aojoy Kumar Shuvo, Ehsanul Bashar Pranto, Mehedi Hasan, Md Mintu Miah</div>
+        <div class="pub-journal">World Journal of Engineering, Emerald Publishing · 2025</div>
+        <div class="pub-doi"><a href="https://doi.org/10.1108/WJE-01-2025-0038" target="_blank">DOI: 10.1108/WJE-01-2025-0038 ↗</a></div>
+      </div>
+      <div class="pub-card journal">
+        <span class="pub-badge j">JOURNAL</span><span class="pub-badge q3">SCOPUS Q3</span>
+        <div class="pub-title">Influence of Building Orientation on Instant, Delayed Sensible and Latent Energy Loads: A Building Information Modelling (BIM) Based Analysis</div>
+        <div class="pub-authors">Muhammad Moniruzzaman, Aninda Ghosh Partha, <strong>Md Rabiul Hasan</strong>, Faruque Abdullah</div>
+        <div class="pub-journal">International Journal of Sustainable Construction Engineering and Technology, 16(1), 33–43 · 2025</div>
+        <div class="pub-doi"><a href="https://doi.org/10.30880/ijscet.2025.16.01.004" target="_blank">DOI: 10.30880/ijscet.2025.16.01.004 ↗</a></div>
+      </div>
+    </div>
+
+    <div class="pub-group pub-group-preprint">
+      <div class="pub-group-label">Pre-print Articles</div>
+      <div class="pub-card preprint">
+        <span class="pub-badge p">PRE-PRINT</span>
+        <div class="pub-title">Machine Learning-Optimized Alkali-Activated Recycled Aggregate Concrete: Mechanical Performance and Life Cycle Assessment</div>
+        <div class="pub-authors"><strong>Hasan, M. R.</strong>, Ahmed, M. S., Siam, I. S., &amp; Moniruzzaman, M.</div>
+        <div class="pub-journal">Engineering Archive · 2025</div>
+        <div class="pub-doi"><a href="https://doi.org/10.31224/5062" target="_blank">DOI: 10.31224/5062 ↗</a></div>
+      </div>
+    </div>
+
+    <div class="pub-group pub-group-conference">
+      <div class="pub-group-label">Conference Proceedings</div>
+      <div class="pub-card conference">
+        <span class="pub-badge c">CONFERENCE 2025</span>
+        <div class="pub-title">Optimizing Engineered Cementitious Composites (ECC) Performance: The Role of Jute and Nylon Fibers in Sustainable Concrete Design</div>
+        <div class="pub-authors">Siam, I.S., <strong>Hasan, M. R.</strong>, Moniruzzaman, M., Rafat, M.F.H.</div>
+        <div class="pub-journal">8th Int'l Conference on Engineering Research, Innovation &amp; Education — SUST, Sylhet, Bangladesh</div>
+        <div class="pub-doi"><a href="#" target="_blank">Read on ResearchGate ↗</a></div>
+      </div>
+      <div class="pub-card conference">
+        <span class="pub-badge c">CONFERENCE 2024</span>
+        <div class="pub-title">Optimizing Recycled Aggregate Concrete Strength Through Surface Treatments and Machine Learning</div>
+        <div class="pub-authors">Abdullah, F., <strong>Hasan, M. R.</strong>, Partha, A. G., Iskander, M. M.</div>
+        <div class="pub-journal">7th Int'l Conference on Advances in Civil Engineering (ICACE2024) — CUET, Chattogram · Dec 2024</div>
+        <div class="pub-doi"><a href="#" target="_blank">Read on ResearchGate ↗</a></div>
+      </div>
+      <div class="pub-card conference">
+        <span class="pub-badge c">CONFERENCE 2024</span>
+        <div class="pub-title">Bridging The Gap: BIM, Data Analytics, and Digital Twins in Construction Life Cycle Management</div>
+        <div class="pub-authors"><strong>Hasan, R.</strong>, Partha, A. G., Islam, M. T., Redwan, B. M. S., &amp; Hasan, M.</div>
+        <div class="pub-journal">7th Int'l Conference on Civil Engineering for Sustainable Development (ICCESD 2024) — KUET, Khulna · Feb 2024</div>
+        <div class="pub-doi"><a href="#" target="_blank">Read on ResearchGate ↗</a></div>
+      </div>
+      <div class="pub-card conference">
+        <span class="pub-badge c">CONFERENCE 2024</span>
+        <div class="pub-title">Carbon Mineralization: Transforming Construction &amp; Demolition Waste Sustainability</div>
+        <div class="pub-authors">Partha, A. G., <strong>Hasan, M. R.</strong>, Islam, M. R., Mamun, N. B., &amp; Hasan, M.</div>
+        <div class="pub-journal">7th Int'l Conference on Civil Engineering for Sustainable Development (ICCESD 2024) — KUET, Khulna · Feb 2024</div>
+        <div class="pub-doi"><a href="#" target="_blank">Read on ResearchGate ↗</a></div>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 <span>Md Rabiul Hasan</span> · mhsrabiul.github.io</footer>
+</div>
+
+<!-- RESEARCH -->
+<div id="page-research" class="page">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Academic Interests</div>
+      <h2 class="section-title">Research</h2>
+    </div>
+    <div class="ri-grid">
+      <div class="ri-card"><div class="ri-icon">🤖</div><div class="ri-name">Artificial Intelligence in Construction</div></div>
+      <div class="ri-card"><div class="ri-icon">🏢</div><div class="ri-name">Digital Twin &amp; BIM</div></div>
+      <div class="ri-card"><div class="ri-icon">♻️</div><div class="ri-name">Sustainable Construction Materials</div></div>
+      <div class="ri-card"><div class="ri-icon">🧵</div><div class="ri-name">Fiber-reinforced Ultra-high-performance Concrete</div></div>
+      <div class="ri-card"><div class="ri-icon">🏭</div><div class="ri-name">Supplementary Cementitious Materials</div></div>
+      <div class="ri-card"><div class="ri-icon">💻</div><div class="ri-name">Computational Modeling</div></div>
+      <div class="ri-card"><div class="ri-icon">🌐</div><div class="ri-name">Smart Infrastructure System Modeling</div></div>
+      <div class="ri-card"><div class="ri-icon">📈</div><div class="ri-name">Data-driven Predictive Models</div></div>
+      <div class="ri-card"><div class="ri-icon">👥</div><div class="ri-name">People-centric Built Environment</div></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+      <div class="section-eyebrow" style="margin-bottom:0;">Research Posts</div>
+      <button class="add-post-btn" onclick="openAddModal('research')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New Post
+      </button>
+    </div>
+    <div class="post-grid" id="research-posts"></div>
+    <div id="research-empty" style="text-align:center;padding:3rem;color:var(--text-muted);font-size:0.85rem;border:1px dashed var(--border);border-radius:12px;">No research posts yet. Click "New Post" to share your research notes.</div>
+  </div>
+  <footer>© 2025 <span>Md Rabiul Hasan</span> · mhsrabiul.github.io</footer>
+</div>
+
+<!-- PROJECTS -->
+<div id="page-projects" class="page">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Work &amp; Experiments</div>
+      <h2 class="section-title">Projects</h2>
+    </div>
+    <div style="display:flex;justify-content:flex-end;">
+      <button class="add-post-btn" onclick="openAddModal('projects')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New Post
+      </button>
+    </div>
+    <div class="post-grid" id="projects-posts"></div>
+    <div id="projects-empty" style="text-align:center;padding:3rem;color:var(--text-muted);font-size:0.85rem;border:1px dashed var(--border);border-radius:12px;margin-top:1rem;">No project posts yet. Click "New Post" to document your projects.</div>
+  </div>
+  <footer>© 2025 <span>Md Rabiul Hasan</span> · mhsrabiul.github.io</footer>
+</div>
+
+<!-- LAB EXPERTISE -->
+<div id="page-lab" class="page">
+  <div class="section-wrap">
+    <div class="section-header">
+      <div class="section-eyebrow">Skills &amp; Competencies</div>
+      <h2 class="section-title">Lab Expertise</h2>
+    </div>
+
+    <div class="skill-cat-title">Programming &amp; Data Science</div>
+    <div class="skill-items">
+      <div class="skill-item"><span class="skill-dot"></span>Python</div>
+      <div class="skill-item"><span class="skill-dot"></span>Scikit-learn</div>
+      <div class="skill-item"><span class="skill-dot"></span>ANN / CNN</div>
+      <div class="skill-item"><span class="skill-dot"></span>XGBoost</div>
+      <div class="skill-item"><span class="skill-dot"></span>Pandas &amp; NumPy</div>
+      <div class="skill-item"><span class="skill-dot"></span>Matplotlib / Seaborn</div>
+      <div class="skill-item"><span class="skill-dot"></span>Big Data Handling</div>
+      <div class="skill-item"><span class="skill-dot"></span>SPSS</div>
+    </div>
+    <div class="skill-cat-title">Engineering Software</div>
+    <div class="skill-items">
+      <div class="skill-item"><span class="skill-dot"></span>AutoCAD</div>
+      <div class="skill-item"><span class="skill-dot"></span>ArcGIS</div>
+      <div class="skill-item"><span class="skill-dot"></span>EnergyPlus</div>
+      <div class="skill-item"><span class="skill-dot"></span>Open LCA</div>
+      <div class="skill-item"><span class="skill-dot"></span>GOM Correlate</div>
+      <div class="skill-item"><span class="skill-dot"></span>Revit / BIM</div>
+    </div>
+    <div class="skill-cat-title">Laboratory Testing</div>
+    <div class="skill-items">
+      <div class="skill-item"><span class="skill-dot"></span>Compressive Strength Testing</div>
+      <div class="skill-item"><span class="skill-dot"></span>Concrete Mix Design</div>
+      <div class="skill-item"><span class="skill-dot"></span>Slump Test</div>
+      <div class="skill-item"><span class="skill-dot"></span>Aggregate Testing</div>
+      <div class="skill-item"><span class="skill-dot"></span>Flexural Strength Testing</div>
+      <div class="skill-item"><span class="skill-dot"></span>Fiber Pullout Test</div>
+      <div class="skill-item"><span class="skill-dot"></span>Tensile Strength Testing</div>
+    </div>
+    <div class="skill-cat-title">Research &amp; Documentation</div>
+    <div class="skill-items">
+      <div class="skill-item"><span class="skill-dot"></span>LaTeX</div>
+      <div class="skill-item"><span class="skill-dot"></span>MS Office</div>
+      <div class="skill-item"><span class="skill-dot"></span>Systematic Literature Review</div>
+      <div class="skill-item"><span class="skill-dot"></span>Statistical Analysis</div>
+      <div class="skill-item"><span class="skill-dot"></span>Technical Report Writing</div>
+      <div class="skill-item"><span class="skill-dot"></span>Research Methodology</div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;">
+        <div class="section-eyebrow" style="margin-bottom:0;">Lab Notes &amp; Posts</div>
+        <button class="add-post-btn" style="margin-bottom:0;" onclick="openAddModal('lab')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Post
+        </button>
+      </div>
+      <div class="post-grid" id="lab-posts"></div>
+      <div id="lab-empty" style="text-align:center;padding:2.5rem;color:var(--text-muted);font-size:0.85rem;border:1px dashed var(--border);border-radius:12px;">No lab posts yet. Document your lab work here.</div>
+    </div>
+  </div>
+  <footer>© 2025 <span>Md Rabiul Hasan</span> · mhsrabiul.github.io</footer>
+</div>
+
+<!-- ADD POST MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+      <div class="modal-title" style="margin-bottom:0;">Add New Post</div>
+      <button class="close-btn" onclick="closeModal('addModal')">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Title *</label>
+      <input class="form-input" id="postTitle" placeholder="Post title...">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 80px;gap:1rem;">
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input class="form-input" id="postDate" type="date">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Icon</label>
+        <input class="form-input" id="postEmoji" placeholder="🔬" maxlength="4">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Short Description (shown on card)</label>
+      <input class="form-input" id="postExcerpt" placeholder="Brief summary...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Full Content</label>
+      <textarea class="form-textarea" id="postContent" placeholder="Full post content..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tags (comma separated)</label>
+      <input class="form-input" id="postTags" placeholder="Machine Learning, Concrete, Python">
+    </div>
+    <div class="form-group">
+      <label class="form-label">GitHub Link (optional)</label>
+      <input class="form-input" id="postGithub" placeholder="https://github.com/...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">External Link (optional)</label>
+      <input class="form-input" id="postLink" placeholder="https://...">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('addModal')">Cancel</button>
+      <button class="btn-primary" onclick="savePost()">Publish Post</button>
+    </div>
+  </div>
+</div>
+
+<!-- POST DETAIL MODAL -->
+<div class="modal-overlay" id="postDetailModal">
+  <div class="modal" style="max-width:700px;">
+    <div style="display:flex;align-items:flex-start;justify-content:flex-end;margin-bottom:1rem;">
+      <button class="close-btn" onclick="closeModal('postDetailModal')">✕</button>
+    </div>
+    <div class="pd-title" id="pd-title"></div>
+    <div class="pd-meta" id="pd-meta"></div>
+    <div class="pd-content" id="pd-content"></div>
+    <div id="pd-links" style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;"></div>
+    <div class="modal-actions" style="margin-top:1.5rem;">
+      <button class="delete-btn" onclick="deleteCurrentPost()">🗑 Delete</button>
+      <button class="btn-secondary" onclick="closeModal('postDetailModal')">Close</button>
+      <button class="btn-primary" onclick="openEditModal()">✏️ Edit Post</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT POST MODAL -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;">
+      <div class="modal-title" style="margin-bottom:0;">Edit Post</div>
+      <button class="close-btn" onclick="closeModal('editModal')">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Title *</label>
+      <input class="form-input" id="editTitle" placeholder="Post title...">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 80px;gap:1rem;">
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input class="form-input" id="editDate" type="date">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Icon</label>
+        <input class="form-input" id="editEmoji" placeholder="🔬" maxlength="4">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Short Description</label>
+      <input class="form-input" id="editExcerpt" placeholder="Brief summary...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Full Content</label>
+      <textarea class="form-textarea" id="editContent" placeholder="Full post content..."></textarea>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Tags (comma separated)</label>
+      <input class="form-input" id="editTags" placeholder="Machine Learning, Concrete, Python">
+    </div>
+    <div class="form-group">
+      <label class="form-label">GitHub Link (optional)</label>
+      <input class="form-input" id="editGithub" placeholder="https://github.com/...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">External Link (optional)</label>
+      <input class="form-input" id="editLink" placeholder="https://...">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('editModal')">Cancel</button>
+      <button class="btn-primary" onclick="updatePost()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Navigation
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelector('[data-page="' + name + '"]').classList.add('active');
+  document.getElementById('navLinks').classList.remove('open');
+  window.scrollTo(0,0);
+  if(['research','projects','lab'].includes(name)) renderPosts(name);
+}
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+
+// Photo auto-load
+(function(){
+  var img = new Image();
+  img.onload = function() {
+    var c = document.getElementById('photoCircle');
+    c.innerHTML = '';
+    img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+    c.appendChild(img);
+  };
+  img.src = 'assets/photo.jpg';
+})();
+
+// Publication filter
+function filterPubs(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-group').forEach(function(g){
+    g.style.display = (type === 'all' || g.classList.contains('pub-group-'+type)) ? 'block' : 'none';
+  });
+}
+
+// Post system
+var currentPage = '';
+var currentPostId = null;
+
+function getPosts(page) {
+  try { return JSON.parse(localStorage.getItem('posts_'+page) || '[]'); }
+  catch(e) { return []; }
+}
+function savePosts(page, posts) {
+  try { localStorage.setItem('posts_'+page, JSON.stringify(posts)); } catch(e) {}
+}
+
+function openAddModal(page) {
+  currentPage = page;
+  document.getElementById('postTitle').value = '';
+  document.getElementById('postDate').value = new Date().toISOString().split('T')[0];
+  document.getElementById('postEmoji').value = '';
+  document.getElementById('postExcerpt').value = '';
+  document.getElementById('postContent').value = '';
+  document.getElementById('postTags').value = '';
+  document.getElementById('postGithub').value = '';
+  document.getElementById('postLink').value = '';
+  document.getElementById('addModal').classList.add('open');
+}
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+function savePost() {
+  var title = document.getElementById('postTitle').value.trim();
+  if(!title) { alert('Title is required.'); return; }
+  var post = {
+    id: Date.now(),
+    title: title,
+    date: document.getElementById('postDate').value || new Date().toISOString().split('T')[0],
+    emoji: document.getElementById('postEmoji').value.trim() || '📄',
+    excerpt: document.getElementById('postExcerpt').value.trim(),
+    content: document.getElementById('postContent').value.trim(),
+    tags: document.getElementById('postTags').value.split(',').map(function(t){ return t.trim(); }).filter(Boolean),
+    github: document.getElementById('postGithub').value.trim(),
+    link: document.getElementById('postLink').value.trim()
+  };
+  var posts = getPosts(currentPage);
+  posts.unshift(post);
+  savePosts(currentPage, posts);
+  closeModal('addModal');
+  renderPosts(currentPage);
+}
+
+function renderPosts(page) {
+  var posts = getPosts(page);
+  var grid = document.getElementById(page+'-posts');
+  var empty = document.getElementById(page+'-empty');
+  if(!grid) return;
+  if(posts.length === 0) {
+    grid.innerHTML = '';
+    if(empty) empty.style.display = 'block';
+    return;
+  }
+  if(empty) empty.style.display = 'none';
+  grid.innerHTML = posts.map(function(p){
+    return '<div class="post-card" onclick="openPost('+p.id+',\''+page+'\')">' +
+      '<div class="post-thumb">' + (p.emoji||'📄') + '</div>' +
+      '<div class="post-body">' +
+        '<div class="post-meta">' + formatDate(p.date) + '</div>' +
+        '<div class="post-title">' + esc(p.title) + '</div>' +
+        (p.excerpt ? '<div class="post-excerpt">' + esc(p.excerpt) + '</div>' : '') +
+        '<div class="post-tags">' + (p.tags||[]).map(function(t){ return '<span class="ptag">'+esc(t)+'</span>'; }).join('') + '</div>' +
+      '</div></div>';
+  }).join('');
+}
+
+function openPost(id, page) {
+  var posts = getPosts(page);
+  var p = posts.filter(function(x){ return x.id === id; })[0];
+  if(!p) return;
+  currentPostId = id;
+  currentPage = page;
+  document.getElementById('pd-title').textContent = p.title;
+  document.getElementById('pd-meta').textContent = formatDate(p.date) + ((p.tags && p.tags.length) ? '  ·  ' + p.tags.join(', ') : '');
+  document.getElementById('pd-content').textContent = p.content || 'No content.';
+  var linksDiv = document.getElementById('pd-links');
+  linksDiv.innerHTML = '';
+  if(p.github) linksDiv.innerHTML += '<a href="'+esc(p.github)+'" target="_blank" class="btn-secondary" style="display:inline-flex;align-items:center;padding:0.5rem 1rem;border:1px solid var(--border);border-radius:8px;color:var(--text-muted);text-decoration:none;font-size:0.8rem;">GitHub Repo ↗</a>';
+  if(p.link) linksDiv.innerHTML += '<a href="'+esc(p.link)+'" target="_blank" class="btn-secondary" style="display:inline-flex;align-items:center;padding:0.5rem 1rem;border:1px solid var(--border);border-radius:8px;color:var(--text-muted);text-decoration:none;font-size:0.8rem;">Read More ↗</a>';
+  document.getElementById('postDetailModal').classList.add('open');
+}
+
+function deleteCurrentPost() {
+  if(!confirm('Delete this post?')) return;
+  var posts = getPosts(currentPage).filter(function(p){ return p.id !== currentPostId; });
+  savePosts(currentPage, posts);
+  closeModal('postDetailModal');
+  renderPosts(currentPage);
+}
+
+function formatDate(d) {
+  if(!d) return '';
+  try {
+    var dt = new Date(d+'T00:00:00');
+    return dt.toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
+  } catch(e) { return d; }
+}
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Edit functions
+function openEditModal() {
+  var posts = getPosts(currentPage);
+  var p = posts.filter(function(x){ return x.id === currentPostId; })[0];
+  if(!p) return;
+  document.getElementById('editTitle').value = p.title || '';
+  document.getElementById('editDate').value = p.date || '';
+  document.getElementById('editEmoji').value = p.emoji || '';
+  document.getElementById('editExcerpt').value = p.excerpt || '';
+  document.getElementById('editContent').value = p.content || '';
+  document.getElementById('editTags').value = (p.tags||[]).join(', ');
+  document.getElementById('editGithub').value = p.github || '';
+  document.getElementById('editLink').value = p.link || '';
+  closeModal('postDetailModal');
+  document.getElementById('editModal').classList.add('open');
+}
+
+function updatePost() {
+  var title = document.getElementById('editTitle').value.trim();
+  if(!title) { alert('Title is required.'); return; }
+  var posts = getPosts(currentPage);
+  var idx = posts.findIndex ? posts.findIndex(function(x){ return x.id === currentPostId; }) : -1;
+  if(idx === -1) { for(var i=0;i<posts.length;i++){ if(posts[i].id===currentPostId){idx=i;break;} } }
+  if(idx === -1) return;
+  posts[idx].title   = title;
+  posts[idx].date    = document.getElementById('editDate').value;
+  posts[idx].emoji   = document.getElementById('editEmoji').value.trim() || posts[idx].emoji;
+  posts[idx].excerpt = document.getElementById('editExcerpt').value.trim();
+  posts[idx].content = document.getElementById('editContent').value.trim();
+  posts[idx].tags    = document.getElementById('editTags').value.split(',').map(function(t){ return t.trim(); }).filter(Boolean);
+  posts[idx].github  = document.getElementById('editGithub').value.trim();
+  posts[idx].link    = document.getElementById('editLink').value.trim();
+  savePosts(currentPage, posts);
+  closeModal('editModal');
+  renderPosts(currentPage);
+}
+
+// Seed sample posts
+(function(){
+  // --- PROJECTS ---
+  if(getPosts('projects').length === 0) {
+    savePosts('projects', [
+      {
+        id: 1725926400001,
+        title: "Hybrid Fiber Reinforced RAC's Compressive Strength Prediction by ML",
+        date: "2024-09-10",
+        emoji: "🔬",
+        excerpt: "Machine learning models to predict compressive strength of hybrid fiber reinforced recycled aggregate concrete from mix design parameters extracted from literature.",
+        content: "Concrete strength prediction is essential in construction projects to ensure the material meets safety and performance standards.\n\nThis project uses machine learning techniques to predict concrete compressive strength based on data from concrete mix design and material properties extracted from peer-reviewed literature.\n\nAlgorithms trained and evaluated:\n— Linear Regression\n— Decision Tree Regressor\n— Random Forest\n— Gradient Boosting / XGBoost\n— Support Vector Regression (SVR)\n\nPerformance metrics used: R², MAE, RMSE\n\nInput features: fiber type, fiber volume fraction, w/c ratio, cement content, aggregate properties, and RCA replacement ratio.\n\nPrediction plots were generated for each model to visualize actual vs predicted compressive strength. XGBoost and Random Forest showed the highest predictive accuracy.",
+        tags: ["Machine Learning","RAC","Python","Scikit-learn","XGBoost"],
+        github: "https://github.com/mhsrabiul",
+        link: ""
+      },
+      {
+        id: 1725926400002,
+        title: "Flood Econometrics & Spatial Spillover Detection with GIS",
+        date: "2024-05-15",
+        emoji: "🌊",
+        excerpt: "Spatial econometric analysis to detect flood damage spillover effects across regions using Spatial Lag and Spatial Error models with ArcGIS visualization.",
+        content: "This project investigates the spatial dependencies and spillover effects of flood damage on economic output across administrative regions of Bangladesh.\n\nMethodology:\n— Spatial autocorrelation analysis (Moran's I)\n— Spatial Lag Model (SLM)\n— Spatial Error Model (SEM)\n— Comparison with OLS baseline\n\nTools used: Python (PySAL, GeoPandas), ArcGIS for mapping and visualization.\n\nKey findings: Significant positive spatial autocorrelation was observed in flood-prone districts, meaning flood damage in one district significantly spills over to neighboring districts. The Spatial Lag Model outperformed OLS, confirming spatial dependency.\n\nAll Python scripts are available in the GitHub repository.",
+        tags: ["Spatial Analysis","GIS","Python","ArcGIS","Econometrics"],
+        github: "https://github.com/mhsrabiul",
+        link: ""
+      },
+      {
+        id: 1725926400003,
+        title: "Soil Classification & Structural Materials Optimization Toolkit",
+        date: "2023-11-20",
+        emoji: "🏗️",
+        excerpt: "Python toolkit for automated soil classification (USCS/AASHTO) and structural materials optimization to minimize cost while meeting design constraints.",
+        content: "A collection of Python scripts and tools developed for civil engineering applications:\n\n1. SOIL CLASSIFICATION TOOL\n— Automated USCS and AASHTO soil classification\n— Input: Atterberg limits, gradation data\n— Output: Soil group, plasticity chart plot\n\n2. STRUCTURAL MATERIALS OPTIMIZATION\n— Minimizes material cost for RC elements\n— Constraints: ACI 318 code requirements\n— Uses SciPy optimization algorithms\n— Outputs: optimal reinforcement ratio, section dimensions\n\nThe toolkit is designed for use in undergraduate coursework and practical field applications. Well-documented with example datasets included.",
+        tags: ["Python","Geotechnical","Optimization","SciPy","Civil Engineering"],
+        github: "https://github.com/mhsrabiul",
+        link: ""
+      }
+    ]);
+  }
+
+  // --- RESEARCH ---
+  if(getPosts('research').length === 0) {
+    savePosts('research', [
+      {
+        id: 1730000000001,
+        title: "Why Machine Learning is Transforming Concrete Strength Prediction",
+        date: "2025-02-10",
+        emoji: "🧠",
+        excerpt: "A summary of how AI-based predictive models are replacing traditional empirical equations in concrete mix design and quality control.",
+        content: "Traditional concrete strength prediction relies on empirical models like ACI 318 or fib equations, which often fail to capture complex nonlinear interactions between mix design variables.\n\nMachine learning addresses this by:\n\n1. LEARNING FROM DATA\nML models trained on thousands of experimental data points can capture interactions between w/c ratio, cement content, aggregate type, fiber reinforcement, and curing conditions that classical equations miss.\n\n2. COMMON ALGORITHMS USED IN LITERATURE\n— Random Forest: robust, handles missing data, gives feature importance\n— XGBoost: high accuracy, fast training\n— ANN: captures highly nonlinear patterns\n— SVM: good for small datasets\n— Gaussian Process Regression: provides uncertainty estimates\n\n3. KEY CHALLENGES\n— Need large, clean datasets from reliable sources\n— Model interpretability (black-box problem) — addressed with SHAP values\n— Generalizability across different concrete types\n\n4. FUTURE DIRECTION\nCombining ML with Life Cycle Assessment (LCA) to optimize both strength AND environmental impact simultaneously is a promising research direction I am currently pursuing.",
+        tags: ["Machine Learning","Concrete","AI","Review","XGBoost"],
+        github: "",
+        link: "https://doi.org/10.1108/WJE-01-2025-0038"
+      },
+      {
+        id: 1730000000002,
+        title: "Recycled Aggregate Concrete: Challenges and Opportunities",
+        date: "2025-01-05",
+        emoji: "♻️",
+        excerpt: "An overview of the mechanical behavior, sustainability benefits, and key challenges in using recycled aggregate concrete (RAC) in structural applications.",
+        content: "Recycled Aggregate Concrete (RAC) is produced by replacing natural coarse aggregates with crushed concrete demolition waste. It offers significant sustainability benefits but comes with engineering challenges.\n\nSUSTAINABILITY BENEFITS:\n— Reduces construction and demolition (C&D) waste going to landfill\n— Lowers demand for virgin aggregate quarrying\n— Can reduce embodied carbon of concrete\n\nMECHANICAL PERFORMANCE CHALLENGES:\n— Lower compressive strength (10–30% reduction vs natural aggregate)\n— Higher water absorption due to adhered mortar\n— Lower elastic modulus\n— Increased drying shrinkage\n\nIMPROVEMENT STRATEGIES:\n1. Surface treatment of recycled aggregates (acid washing, carbonation)\n2. Addition of supplementary cementitious materials (fly ash, GGBS, silica fume)\n3. Fiber reinforcement (steel, polypropylene, glass, basalt, jute)\n\nFIBER-REINFORCED RAC:\nAdding fibers significantly improves tensile strength, flexural performance, and ductility of RAC. My research focuses on hybrid fiber combinations to maximize performance improvements.\n\nThis remains an active and important research area as construction industries globally push toward circular economy targets.",
+        tags: ["RAC","Sustainability","Fiber Reinforcement","Concrete","Literature Review"],
+        github: "",
+        link: ""
+      },
+      {
+        id: 1730000000003,
+        title: "Digital Twins in Construction: Where We Are and Where We're Going",
+        date: "2024-12-01",
+        emoji: "🏢",
+        excerpt: "A research note on the current state of digital twin technology in the construction industry, its integration with BIM, and future research directions.",
+        content: "A Digital Twin (DT) is a real-time virtual replica of a physical asset or system that continuously updates from sensor data. In construction, it bridges the gap between the physical build environment and digital information models.\n\nCURRENT STATE:\n— BIM (Building Information Modeling) provides the geometric and semantic foundation\n— IoT sensors feed real-time data into the model\n— Applied in structural health monitoring, energy performance, and facility management\n\nKEY TECHNOLOGIES ENABLING CONSTRUCTION DIGITAL TWINS:\n— BIM platforms (Revit, IFC standard)\n— IoT & sensor networks\n— Cloud computing\n— Machine Learning for predictive analytics\n— AR/VR for visualization\n\nRESEARCH GAPS IDENTIFIED:\n1. Lack of standardized data exchange protocols across platforms\n2. High implementation cost for small-medium projects\n3. Limited integration with life cycle assessment (LCA) tools\n4. People-centric aspects (occupant behavior, health) rarely modeled\n\nMY RESEARCH INTEREST:\nI am particularly interested in integrating ML-based predictive models within digital twin frameworks for infrastructure health monitoring and sustainable construction decision-making.",
+        tags: ["Digital Twin","BIM","IoT","Smart Infrastructure","Research Note"],
+        github: "",
+        link: ""
+      }
+    ]);
+  }
+
+  // --- LAB ---
+  if(getPosts('lab').length === 0) {
+    savePosts('lab', [
+      {
+        id: 1735000000001,
+        title: "Compressive Strength Testing of Fiber Reinforced Concrete — Lab Protocol",
+        date: "2023-10-12",
+        emoji: "🧱",
+        excerpt: "Step-by-step laboratory protocol for casting, curing, and testing compressive strength of fiber reinforced concrete cylinders per ASTM C39.",
+        content: "This note documents the standard laboratory procedure used in the Construction Technology Lab at RUET for compressive strength testing of fiber reinforced concrete specimens.\n\nSPECIMEN PREPARATION:\n— Cylinder size: 100mm × 200mm (ASTM C39)\n— Mix design based on ACI 211.1\n— Fibers added at 0%, 0.5%, 1.0%, 1.5% volume fraction\n— Fiber types tested: steel hooked-end, polypropylene, glass\n\nMIXING PROCEDURE:\n1. Dry mix aggregates and cement for 2 minutes\n2. Add 70% of mixing water, mix 2 minutes\n3. Add fibers gradually while mixing (prevents clumping)\n4. Add remaining water + admixture, mix 3 minutes\n5. Perform slump test immediately (ASTM C143)\n\nCURING:\n— Demolding after 24 hours\n— Moist curing in water tank at 23°C\n— Test ages: 7-day, 28-day, 56-day\n\nTESTING:\n— Universal Testing Machine (UTM)\n— Loading rate: 0.25 MPa/s (ASTM C39)\n— Record peak load, calculate fc = 4P/πd²\n— Observe failure mode (cone, shear, columnar)\n\nOBSERVATIONS:\nFiber addition significantly improves post-crack toughness and changes failure mode from brittle (plain concrete) to more ductile with visible fiber pullout.",
+        tags: ["Lab Protocol","Compressive Strength","ASTM C39","Fiber Concrete","RUET"],
+        github: "",
+        link: ""
+      },
+      {
+        id: 1735000000002,
+        title: "Using SHAP Values to Interpret ML Models in Concrete Research",
+        date: "2024-03-18",
+        emoji: "📊",
+        excerpt: "How to use SHAP (SHapley Additive exPlanations) to explain the predictions of black-box ML models for concrete compressive strength prediction.",
+        content: "One of the biggest criticisms of ML models in civil engineering research is their black-box nature — they predict well but don't explain WHY. SHAP values solve this problem.\n\nWHAT ARE SHAP VALUES?\nSHAP (SHapley Additive exPlanations) is a game theory-based approach to explain individual predictions. It assigns each input feature a contribution value for a specific prediction.\n\nINSTALLATION:\npip install shap\n\nBASIC WORKFLOW (Python):\n\nimport shap\nimport xgboost as xgb\n\n# Train model\nmodel = xgb.XGBRegressor()\nmodel.fit(X_train, y_train)\n\n# Create explainer\nexplainer = shap.TreeExplainer(model)\nshap_values = explainer.shap_values(X_test)\n\n# Summary plot (global feature importance)\nshap.summary_plot(shap_values, X_test)\n\n# Force plot (single prediction explanation)\nshap.force_plot(explainer.expected_value, shap_values[0], X_test.iloc[0])\n\nKEY PLOTS:\n— Summary plot: shows global feature importance + direction of effect\n— Dependence plot: shows interaction between two features\n— Force plot: explains a single prediction\n— Waterfall plot: step-by-step contribution breakdown\n\nINSIGHTS FROM MY RESEARCH:\nIn concrete strength prediction, w/c ratio and cement content consistently showed the highest SHAP values, confirming known physics. Fiber volume fraction had smaller but positive SHAP values, validating experimental literature.",
+        tags: ["SHAP","XGBoost","Interpretability","Python","ML"],
+        github: "https://github.com/mhsrabiul",
+        link: ""
+      },
+      {
+        id: 1735000000003,
+        title: "Life Cycle Assessment (LCA) of Concrete Using OpenLCA — A Beginner's Guide",
+        date: "2024-07-22",
+        emoji: "🌱",
+        excerpt: "Getting started with OpenLCA for conducting environmental impact assessment of concrete mixes, including GWP, energy demand, and water use calculations.",
+        content: "Life Cycle Assessment (LCA) quantifies the environmental impact of a product across its entire life cycle — from raw material extraction to end-of-life disposal.\n\nFor concrete research, LCA is becoming essential to evaluate sustainability alongside mechanical performance.\n\nSOFTWARE: OpenLCA (free, open-source)\nDATABASE: ecoinvent 3.x (most comprehensive for construction materials)\n\nLCA STAGES FOR CONCRETE:\nA1 — Raw material extraction (cement, aggregates, admixtures)\nA2 — Transportation to plant\nA3 — Concrete production (mixing, energy use)\n[A4-A5 — Construction phase, often excluded in material LCA]\n\nKEY IMPACT CATEGORIES:\n— Global Warming Potential (GWP) in kg CO₂-eq → most reported\n— Cumulative Energy Demand (CED) in MJ\n— Water Consumption in m³\n— Abiotic Depletion Potential (ADP)\n\nSTEP-BY-STEP IN OpenLCA:\n1. Create new project, select ecoinvent database\n2. Create product system for 1 m³ concrete (functional unit)\n3. Link processes: cement production → concrete mixing\n4. Define system boundary (A1-A3)\n5. Run impact assessment → select CML-IA or ReCiPe method\n6. Export results to Excel for reporting\n\nKEY FINDING FROM MY RESEARCH:\nAlkali-activated concrete (using GGBS + fly ash binder) showed up to 60% lower GWP compared to OPC concrete, while maintaining comparable compressive strength — making it a promising sustainable alternative.",
+        tags: ["LCA","OpenLCA","Sustainability","GWP","Concrete"],
+        github: "",
+        link: ""
+      }
+    ]);
+  }
+})();
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(function(o){
+  o.addEventListener('click', function(e){ if(e.target===o) o.classList.remove('open'); });
+});
+</script>
+</body>
+</html>
